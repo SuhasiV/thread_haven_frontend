@@ -1,0 +1,134 @@
+@import "../../css-config/mixins.scss";
+.slider {
+  height: calc(100vh - 60px);
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  background-color: #e1e1e1;
+  @include md {
+    height: calc(100vh - 60px);
+  }
+
+  .sliderContainer {
+    height: 100%;
+    width: 300vw;
+    display: flex;
+    transition: all 1s ease;
+
+    img {
+      width: 100vw;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slider1Title {
+      padding: 20px 0px;
+      text-align: center;
+      right: 0;
+      font-size: 35px;
+      letter-spacing: 2px;
+      color: #fff;
+      @include md {
+        background: none;
+        font-size: 66px;
+      }
+    }
+
+    .slider1Text {
+      margin: 0px 10px 30px 10px;
+      font-size: 15px;
+      font-family: Consolas;
+      letter-spacing: -0.8px;
+      text-align: center;
+      font-style: italic;
+      color: #fff;
+      @include md {
+        font-size: 21px;
+        top: 47%;
+        left: 48%;
+      }
+    }
+
+    .button {
+      text-align: center;
+      margin: 0px auto;
+      width: 80px;
+      padding: 5px 10px;
+      font-size: 13px;
+      border-radius: 5px;
+      border: 3px solid #fff;
+      background: #fff;
+      color: #65468b;
+      cursor: pointer;
+      @include md {
+        padding: 15px 20px;
+        font-size: 20px;
+        border-radius: 10px;
+        width: 150px;
+      }
+      &:hover {
+        color: #fff;
+        background: #82619f;
+      }
+    }
+
+    .info {
+      width: 70vw;
+      position: absolute;
+      top: 25%;
+      bottom: 22%;
+      left: 10%;
+      right: 0;
+      background-color: #ac9ebd79;
+      border: 1px solid #fff;
+    }
+
+    .info2 {
+      width: 70vw;
+      position: absolute;
+      top: 25%;
+      bottom: 22%;
+      left: 33.5%;
+      right: 0;
+      background-color: #637d8379;
+      border: 1px solid #fff;
+    }
+
+    .info3 {
+      width: 70vw;
+      position: absolute;
+      top: 25%;
+      bottom: 22%;
+      left: 77%;
+      right: 0;
+      background-color: #79747479;
+      border: 1px solid #fff;
+    }
+  }
+
+  .icons {
+    width: fit-content;
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    gap: 10px;
+    bottom: 30px;
+    @include md {
+      bottom: 80px;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #999;
+      border-radius: 50%;
+      background-color: #fff;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  }
+}

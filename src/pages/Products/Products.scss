@@ -1,0 +1,46 @@
+@import "../../css-config/mixins.scss";
+.products {
+  padding: 20px;
+  display: flex;
+  @include md {
+    padding: 30px 60px;
+  }
+
+  .left {
+    margin-right: 10px;
+    flex: 1;
+    top: 50px;
+
+    .filterItem {
+      margin-bottom: 30px;
+
+      h2 {
+        font-weight: 400;
+        margin-bottom: 20px;
+        font-size: 18px;
+        @include md {
+          font-size: 23px;
+        }
+      }
+
+      .inputItem {
+        margin-bottom: 10px;
+        label {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .right {
+    margin-left: 10px;
+    flex: 3;
+
+    .catImg {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      margin-bottom: 50px;
+    }
+  }
+}
