@@ -40,6 +40,26 @@
       font-weight: 500;
     }
 
+    .size {
+      width: 60px;
+      height: 60px;
+      border-radius: 100px;
+      border-color: #4c4c4c;
+      color: #2879fe;
+      background-color: #fff;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+    .size:hover {
+      background-color: #2879fe;
+      color: #fff;
+    }
+
+    .sizeActive {
+      color: red;
+    }
+
     p {
       font-size: 18px;
       font-weight: 300;

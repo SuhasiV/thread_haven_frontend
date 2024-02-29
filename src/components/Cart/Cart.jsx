@@ -22,14 +22,16 @@ const Cart = () => {
           <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
           <div className="details">
             <h1>{item.title}</h1>
-
+            <h5>Size: {item.size}</h5>
             <div className="price">
               {item.quantity} X ${item.price}
             </div>
           </div>
           <AiOutlineDelete
             className="delete"
-            onClick={() => dispatch(removeItem(item.id))}
+            onClick={() =>
+              dispatch(removeItem({ id: item.id, size: item.size }))
+            }
           />
         </div>
       ))}

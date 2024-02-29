@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Product.scss";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import BalanceIcon from "@mui/icons-material/Balance";
+
 import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -13,9 +13,12 @@ const Product = () => {
   const id = useParams().id;
   const [selectedImg, setSelectedImg] = useState("img");
   const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState({ name: null, isClicked: false });
 
   const dispatch = useDispatch();
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+
+  console.log(size);
 
   return (
     <div className="product">
@@ -54,8 +57,29 @@ const Product = () => {
           </div>
           <div className="right">
             <h1>{data?.attributes?.title}</h1>
+            <span>{data?.attributes?.desc?.[0]?.children?.[0]?.text}</span>
             <span className="price">${data?.attributes?.price}</span>
-            <p>{data?.attributes?.desc}</p>
+            <span>
+              <b>Select Size:</b>
+            </span>
+            <div>
+              {data?.attributes?.size?.data.map((item) => (
+                <button
+                  className="size"
+                  key={item.size}
+                  onClick={() => {
+                    setSize({ name: item.size, isClicked: !size.isClicked });
+                  }}
+                >
+                  {item.size === size.name ? (
+                    <div className="sizeActive">{item.size}</div>
+                  ) : (
+                    item.size
+                  )}
+                </button>
+              ))}
+            </div>
+
             <div className="quantity">
               <button
                 onClick={() =>
@@ -77,6 +101,7 @@ const Product = () => {
                     desc: data.attributes.desc,
                     price: data.attributes.price,
                     img: data.attributes.img.data.attributes.url,
+                    size: size.name,
                     quantity,
                   })
                 )
@@ -88,22 +113,20 @@ const Product = () => {
               <div className="item">
                 <FavoriteBorderIcon /> ADD TO WISH LIST
               </div>
-              <div className="item">
-                <BalanceIcon /> ADD TO COMPARE
-              </div>
             </div>
             <div className="info">
-              <span>Vendor: Polo</span>
-              <span>Product Type: T-Shirt</span>
-              <span>Tag: T-Shirt, Women, Top</span>
-            </div>
-            <hr />
-            <div className="info">
-              <span>DESCRIPTION</span>
-              <hr />
-              <span>ADDITIONAL INFORMATION</span>
-              <hr />
-              <span>FAQ</span>
+              <p>
+                Additional info
+                <ul>
+                  {data?.attributes?.additionalInfo?.map((item) =>
+                    item.children.map((child) =>
+                      child.type === "text" ? (
+                        <li key={child.text}>{child.text}</li>
+                      ) : null
+                    )
+                  )}
+                </ul>
+              </p>
             </div>
           </div>
         </>
