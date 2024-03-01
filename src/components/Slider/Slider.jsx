@@ -34,7 +34,7 @@ const Slider = () => {
             </div>
             <div className="button">
               {" "}
-              <Link className="link" to="/ShoppingSite/products/2">
+              <Link className="link" to="/products/1">
                 Explore More
               </Link>
             </div>
@@ -50,7 +50,7 @@ const Slider = () => {
               category!
             </div>
             <div className="button">
-              <Link className="link" to="/ShoppingSite/products/1">
+              <Link className="link" to="products/2">
                 Explore More
               </Link>
             </div>
@@ -67,7 +67,7 @@ const Slider = () => {
             </div>
             <div className="button">
               {" "}
-              <Link className="link" to="/ShoppingSite/products/2">
+              <Link className="link" to="/products/1">
                 Explore More
               </Link>
             </div>

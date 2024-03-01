@@ -12,15 +12,15 @@ const Footer = () => {
         <BsLinkedin />
       </div>
       <div className="info">
-        <Link className="link" to="/ShoppingSite/">
+        <Link className="link" to="/">
           Home
         </Link>
         <div className="dot">.</div>
-        <Link className="link" to="/ShoppingSite/products/2">
+        <Link className="link" to="/products/1">
           Women
         </Link>
         <div className="dot">.</div>
-        <Link className="link" to="/ShoppingSite/products/1">
+        <Link className="link" to="/products/2">
           Men
         </Link>
       </div>
