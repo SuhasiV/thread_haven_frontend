@@ -9,12 +9,12 @@ const Card = ({ item }) => {
         <div className="image">
           {item?.attributes.isNew && <span>New Season</span>}
           <img
-            src={item?.attributes?.img?.data?.attributes?.url}
+            src={item.attributes?.img?.data?.attributes?.url}
             alt=""
             className="img1"
           />
           <img
-            src={item?.attributes?.img2?.data?.attributes?.url}
+            src={item.attributes?.img2?.data?.attributes?.url}
             alt=""
             className="img2"
           />
