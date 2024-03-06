@@ -1,0 +1,14 @@
+.wishlist_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: space-between; /* This will space out the items evenly */
+  gap: 20px; /* Optional: adds space between the cards if you prefer */
+}
+
+.wishlist_Card {
+  flex: 1 1 22%; /* Grow to fill space, but start with a basis of 22% */
+  max-width: 290px; /* Adjust max-width as necessary to fit 4 items */
+  /* Your existing styles here */
+}

@@ -55,7 +55,10 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="icons">
-            <FavoriteBorderOutlinedIcon />
+            <Link className="wishlist" to="/wishlist">
+              <FavoriteBorderOutlinedIcon />
+            </Link>
+
             <div className="cartIcon" onClick={() => setOpen(!open)}>
               <ShoppingCartOutlinedIcon />
               <span>{products.length}</span>

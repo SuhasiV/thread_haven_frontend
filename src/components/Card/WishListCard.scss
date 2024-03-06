@@ -1,27 +1,22 @@
 @import "../../css-config/mixins.scss";
-.link {
-  text-decoration: none;
-  color: #000;
-
-  @include md {
-    width: calc(33% - 10px);
-    margin-bottom: 20px;
+.wishlist_card {
+  .wishLink {
+    text-decoration: none;
+    color: #000;
   }
+
   .image {
-    width: 100%;
     height: calc(35vh - 10px);
     overflow: hidden;
     position: relative;
     @include md {
       height: 400px;
     }
-
     &:hover {
       .img2 {
         z-index: 2;
       }
     }
-
     img {
       object-fit: cover;
       position: absolute;
@@ -44,6 +39,7 @@
       font-size: 12px;
     }
   }
+
   h2 {
     margin-top: 0;
     margin-bottom: 0;

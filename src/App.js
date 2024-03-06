@@ -9,6 +9,7 @@ import Products from "./pages/Products/Products";
 import About from "./pages/About/About";
 import "./app.scss";
 import Contact from "./pages/Contact/Contact";
+import WishList from "./pages/Wishlist/Wishlist";
 
 const Layout = () => {
   return (
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/try",
         element: <Try />,
+      },
+      {
+        path: "/wishlist",
+        element: <WishList />,
       },
       {
         path: "*",

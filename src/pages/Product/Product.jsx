@@ -8,6 +8,7 @@ import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartReducer";
+import { useWishlistProducts } from "../../redux/useWishlist";
 
 const Product = () => {
   const id = useParams().id;
@@ -18,7 +19,21 @@ const Product = () => {
   const dispatch = useDispatch();
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
 
-  console.log(size);
+  const [wishlistedProd, dispatchwishlist] = useWishlistProducts();
+
+  const handleOnWishlist = (id) => {
+    const isStarred = wishlistedProd.includes(id);
+
+    if (isStarred) {
+      dispatchwishlist({ type: "UNLIKE", id });
+    } else {
+      dispatchwishlist({ type: "LIKE", id });
+    }
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data) return <div>No product data found</div>;
 
   return (
     <div className="product">
@@ -29,28 +44,19 @@ const Product = () => {
           <div className="left">
             <div className="images">
               <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img?.data?.attributes?.url
-                }
+                src={data?.attributes?.img?.data?.attributes?.url}
                 alt=""
                 onClick={(e) => setSelectedImg("img")}
               />
               <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img2?.data?.attributes?.url
-                }
+                src={data?.attributes?.img2?.data?.attributes?.url}
                 alt=""
                 onClick={(e) => setSelectedImg("img2")}
               />
             </div>
             <div className="mainImg">
               <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes[selectedImg]?.data?.attributes?.url
-                }
+                src={data?.attributes[selectedImg]?.data?.attributes?.url}
                 alt=""
               />
             </div>
@@ -110,10 +116,32 @@ const Product = () => {
               <AddShoppingCartIcon /> ADD TO CART
             </button>
             <div className="links">
-              <div className="item">
-                <FavoriteBorderIcon /> ADD TO WISH LIST
+              <div className="item" onClick={() => handleOnWishlist(data.id)}>
+                {wishlistedProd.includes(data.id) ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItem: "center",
+                      gap: "10px",
+                    }}
+                  >
+                    <FavoriteBorderIcon style={{ color: "purple" }} />{" "}
+                    <span style={{ color: "purple" }}>WISHLISTED</span>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItem: "center",
+                      gap: "10px",
+                    }}
+                  >
+                    <FavoriteBorderIcon /> ADD TO WISH LIST
+                  </div>
+                )}
               </div>
             </div>
+
             <div className="info">
               <p>
                 Additional info
